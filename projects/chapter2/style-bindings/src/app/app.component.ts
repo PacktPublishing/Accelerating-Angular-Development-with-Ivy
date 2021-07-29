@@ -2,9 +2,15 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <app-host-binding
+      [ngStyle]="{ background: 'pink' }"
+      [style.background]="'red'"
+      [style]="{ background: 'orange' }"
+      style="background: yellow;"
+      appHostBinding
+      >Content</app-host-binding
+    >
+  `,
 })
-export class AppComponent {
-  title = 'chapter2-style-bindings';
-}
+export class AppComponent {}
