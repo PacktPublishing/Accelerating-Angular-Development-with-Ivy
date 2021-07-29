@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { BidiFeatureModule } from './bidi/feature/bidi-feature.module';
+import { CoreModule } from './core/core.module';
+import { LocaleFeatureModule } from './locale/feature/locale-feature.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  declarations: [AppComponent],
+  imports: [CoreModule, BidiFeatureModule, LocaleFeatureModule, NoopAnimationsModule],
 })
-export class AppModule { }
+export class AppModule {}
