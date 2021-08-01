@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './shared/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { TweetCourseModule } from './tweetcourse/tweetcourse.module';
 import { TweetCourseComponent } from './tweetcourse/tweetcourse.component';
 import { createCustomElement } from '@angular/elements';
 
@@ -17,6 +19,7 @@ import { createCustomElement } from '@angular/elements';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    TweetCourseModule,
     MaterialModule,
     NavigationModule,
     AppRoutingModule,
