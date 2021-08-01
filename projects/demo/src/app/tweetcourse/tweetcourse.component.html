@@ -1,0 +1,7 @@
+<ng-container *ngIf="course$ | async as course">
+  <a
+    href="https://twitter.com/intent/tweet?button_hashtag={{ course.hashtag }}"
+    class="twitter-hashtag-button"
+    >Tweet {{ course.hashtag }}</a
+  >
+</ng-container>

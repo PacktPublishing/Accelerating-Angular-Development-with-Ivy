@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-title>Theme editor</mat-card-title>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>App background </mat-label>
+      <input
+        matInput
+        name="background"
+        (blur)="setSetting($event)"
+        type="color"
+        [value]="background"
+      />
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Header background </mat-label>
+      <input
+        id="headerBackground"
+        matInput
+        name="headerBackground"
+        (blur)="setSetting($event)"
+        type="color"
+        [value]="headerBackground"
+      />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> Tile background </mat-label>
+      <input
+        matInput
+        name="tileBackground"
+        (blur)="setSetting($event)"
+        type="color"
+        [value]="tileBackground"
+      />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-label> video size </mat-label>
+    <mat-slider
+      id="videoSizeSlider"
+      thumbLabel
+      min="3"
+      max="7"
+      step="1"
+      (input)="setSize('videoSize', $event)"
+      [value]="videoSize"
+    >
+    </mat-slider>
+  </p>
+  <p>
+    <mat-label> text size</mat-label>
+    <mat-slider
+      id="textSizeSlider"
+      thumbLabel
+      min="3"
+      max="5"
+      step="1"
+      (input)="setSize('textSize', $event)"
+      [value]="textSize"
+    >
+    </mat-slider>
+  </p>
+</mat-card>

@@ -1,0 +1,17 @@
+<ng-container *ngIf="schools$ | async as schools">
+  <google-map [center]="{ lat: 56.783778, lng: 8.228937 }">
+    <map-marker
+      *ngFor="let school of schools"
+      #marker="mapMarker"
+      [position]="{ lat: school.longitude, lng: school.latitude }"
+      (mapClick)="openInfo(marker, school)"
+    ></map-marker>
+    <map-info-window>
+      <div *ngFor="let course of school?.courses">
+        <a (click)="saveCourseId(course.id)" href="course/{{ course.id }}">
+          {{ course.title }}
+        </a>
+      </div>
+    </map-info-window>
+  </google-map>
+</ng-container>
