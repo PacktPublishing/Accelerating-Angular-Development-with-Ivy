@@ -487,6 +487,9 @@
     "chapter3-css-custom-properties": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
         "@schematics/angular:component": {
           "skipTests": true
         },
