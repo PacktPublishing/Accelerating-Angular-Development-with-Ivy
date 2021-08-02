@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CourseComponent } from './course.component';
 import { VideoModule } from '../video/video.module';
@@ -15,8 +15,8 @@ describe('CoursesComponent', () => {
   let loader: HarnessLoader;
   let courseService: CourseService;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       imports: [
         CommonModule,
         RouterTestingModule,
@@ -31,27 +31,31 @@ describe('CoursesComponent', () => {
 
     fixture = TestBed.createComponent(CourseComponent);
     loader = TestbedHarnessEnvironment.loader(fixture);
-  });
+  }));
 
-  it('should render the course video titles on screen', async () => {
-    const renderedVideos = await loader.getAllHarnesses(VideoHarness);
+  it('should render the course video titles on screen', waitForAsync(() => {
+    loader.getAllHarnesses(VideoHarness).then ( (renderedVideos)=> {
+      courseService.getCourse('1').subscribe((course) => {
+        renderedVideos.forEach((video: VideoHarness) => {
+          video.getText().then((text) => {
+            expect(text).toBeDefined();
+            if (text) {
+              expect(
+                course.videos.find((v) => video.textEquals(v, text))
+              ).toBeTruthy();
+            }
+          }) 
+        });
+      });
+    })
+ }));
 
-    courseService.getCourse('1').subscribe((course) => {
+  it('should have the videoId available when rendering the video',  waitForAsync(() => {
+    loader.getAllHarnesses(VideoHarness).then( (renderedVideos) => {
       renderedVideos.forEach(async (video: VideoHarness) => {
-        const text = (await video.getText()) || '';
-        expect(text).toBeDefined();
-        expect(
-          course.videos.find((v) => video.textEquals(v, text))
-        ).toBeTruthy();
+        const videoId = await video.getVideoId();
+        expect(videoId).toBeTruthy();
       });
     });
-  });
-
-  it('should have the videoId available when rendering the video', async () => {
-    const renderedVideos = await loader.getAllHarnesses(VideoHarness);
-    renderedVideos.forEach(async (video: VideoHarness) => {
-      const videoId = await video.getVideoId();
-      expect(videoId).toBeTruthy();
-    });
-  });
+  }));
 });
