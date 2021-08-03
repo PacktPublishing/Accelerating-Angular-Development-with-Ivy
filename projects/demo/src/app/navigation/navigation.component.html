@@ -16,9 +16,10 @@
         >
         <a mat-list-item routerLink="/schools">Find school</a>
         <a *ngIf="token" mat-list-item (click)="logout()" href="#">Logout</a>
+
       </ng-container>
       <a mat-list-item routerLink="/theme">Edit Theme</a>
-      <ng-container *ngIf="courseId">
+      <ng-container *ngIf="courseId && token">
         <tweet-course courseId="courseId"></tweet-course>
       </ng-container>
     </mat-nav-list>
