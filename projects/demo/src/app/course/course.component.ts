@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ICourse } from '../course.model';
 import { Observable, Subscription } from 'rxjs';
 
-console.log('load ourse component');
 @Component({
   selector: 'workspace-course',
   templateUrl: './course.component.html',
