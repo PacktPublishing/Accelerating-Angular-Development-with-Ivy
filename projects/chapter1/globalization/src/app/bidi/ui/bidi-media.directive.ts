@@ -1,11 +1,5 @@
 import { Direction } from '@angular/cdk/bidi';
-import {
-  Directive,
-  EmbeddedViewRef,
-  Input,
-  TemplateRef,
-  ViewContainerRef,
-} from '@angular/core';
+import { Directive, EmbeddedViewRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 import { RxState } from '@rx-angular/state';
 import { filter } from 'rxjs/operators';
 
@@ -20,7 +14,6 @@ const directionQueryPattern = /^\(dir: (?<direction>ltr|rtl)\)$/;
 
 @Directive({
   exportAs: 'bidiMedia',
-  // tslint:disable-next-line: directive-selector
   selector: '[media]',
 })
 export class BidiMediaDirective extends RxState<BidiMediaState> {
@@ -80,7 +73,6 @@ export class BidiMediaDirective extends RxState<BidiMediaState> {
   }
 
   private queryToDirection(query: string): Direction {
-    // tslint:disable-next-line: no-non-null-assertion
     const { groups: { direction } = {} } = query.match(directionQueryPattern)!;
 
     return direction as Direction;
