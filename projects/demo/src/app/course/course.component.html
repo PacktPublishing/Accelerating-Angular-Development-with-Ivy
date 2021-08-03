@@ -1,0 +1,13 @@
+<ng-container *ngIf="course$ | async as course">
+  <mat-card>
+    <mat-card-header>{{ course.title }}</mat-card-header>
+    <div *ngFor="let video of course?.videos">
+      <workspace-video
+        videoId="{{ video.externalId }}"
+        title="{{ video.title }}"
+        description="{{ video.description }}"
+      >
+      </workspace-video>
+    </div>
+  </mat-card>
+</ng-container>

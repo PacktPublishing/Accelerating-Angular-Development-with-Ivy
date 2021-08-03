@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mat-grid-tile {
+  background: var(--tilebackground, cyan);
+}
+
+.mat-card {
+  background-color: var(--background, 'grey');
+}
+
+.mat-body {
+  background-color: var(--background, 'grey');
+}
+
+.mat-drawer-content {
+  background: var(--background, 'grey');
+}
