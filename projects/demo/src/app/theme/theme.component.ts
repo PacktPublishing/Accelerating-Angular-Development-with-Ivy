@@ -40,5 +40,6 @@ export class ThemeComponent {
 
   setSetting(event: any): void {
     this.themeService.setSetting(event.target?.name, event.target?.value);
+    location.reload();
   }
 }
