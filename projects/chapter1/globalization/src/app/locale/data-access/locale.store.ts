@@ -29,7 +29,6 @@ export class LocaleStore extends ComponentStore<LocaleState> {
   #loadedLocale: Observable<LanguageTag> = this.select(
     (state) => state.loadedLocale
   );
-  #loader: LocaleLoader;
   #selectedLocale$: Observable<LanguageTag> = this.select(
     (state) => state.selectedLocale
   );
@@ -40,7 +39,7 @@ export class LocaleStore extends ComponentStore<LocaleState> {
    */
   direction$: Observable<Direction> = this.select(
     this.#loadedLocale,
-    (loadedLocale) => this.#localeToDirection(loadedLocale),
+    (loadedLocale) => this.localeToDirection(loadedLocale),
     {
       debounce: true,
     }
@@ -52,16 +51,19 @@ export class LocaleStore extends ComponentStore<LocaleState> {
     }
   );
 
-  constructor(@Inject(LOCALE_ID) appLocale: string, loader: LocaleLoader) {
+  constructor(
+    @Inject(LOCALE_ID) appLocale: string,
+    private loader: LocaleLoader
+  ) {
     super();
     this.#appLocale = createLanguageTag(appLocale);
-    this.#loader = loader;
+    this.loader = loader;
 
     this.setState({
       loadedLocale: this.#appLocale,
       selectedLocale: this.#appLocale,
     });
-    this.#loadLocaleOnSelection(this.#selectedLocale$);
+    this.loadLocaleOnSelection(this.#selectedLocale$);
   }
 
   selectLocale = this.updater<LanguageTag>(
@@ -71,27 +73,29 @@ export class LocaleStore extends ComponentStore<LocaleState> {
     })
   );
 
-  #isBundled(locale: LanguageTag): boolean {
+  private isBundled(locale: LanguageTag): boolean {
     return [this.#appLocale, this.#bundledLocale].includes(locale);
   }
 
-  #loadLocaleOnSelection = this.effect<LanguageTag>((selectedLocale$) =>
+  private loadLocaleOnSelection = this.effect<LanguageTag>((selectedLocale$) =>
     selectedLocale$.pipe(
       switchMap((locale) =>
-        this.#isBundled(locale)
+        this.isBundled(locale)
           ? of(locale)
-          : this.#loader.load(locale).pipe(mapTo(locale))
+          : this.loader.load(locale).pipe(mapTo(locale))
       ),
-      tap(this.#updateLoadedLocale.bind(this))
+      tap((locale) => this.updateLoadedLocale(locale))
     )
   );
 
-  #localeToDirection(locale: string): Direction {
+  private localeToDirection(locale: string): Direction {
     return getLocaleDirection(locale);
   }
 
-  #updateLoadedLocale = this.updater<LanguageTag>((state, loadedLocale) => ({
-    ...state,
-    loadedLocale,
-  }));
+  private updateLoadedLocale = this.updater<LanguageTag>(
+    (state, loadedLocale) => ({
+      ...state,
+      loadedLocale,
+    })
+  );
 }
