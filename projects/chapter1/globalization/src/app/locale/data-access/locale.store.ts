@@ -57,7 +57,6 @@ export class LocaleStore extends ComponentStore<LocaleState> {
   ) {
     super();
     this.#appLocale = createLanguageTag(appLocale);
-    this.loader = loader;
 
     this.setState({
       loadedLocale: this.#appLocale,
