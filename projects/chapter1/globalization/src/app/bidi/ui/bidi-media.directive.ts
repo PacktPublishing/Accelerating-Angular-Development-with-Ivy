@@ -3,13 +3,21 @@ import {
   Directive,
   EmbeddedViewRef,
   Input,
+  OnDestroy,
+  OnInit,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { RxState } from '@rx-angular/state';
-import { filter } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  takeUntil,
+  withLatestFrom,
+} from 'rxjs/operators';
 
-import { LocaleStateService } from '../../locale/data-access/locale-state.service';
+import { LocaleStore } from '../../locale/data-access/locale.store';
 
 export interface BidiMediaState {
   readonly appDirection: Direction;
@@ -22,8 +30,13 @@ const directionQueryPattern = /^\(dir: (?<direction>ltr|rtl)\)$/;
   exportAs: 'bidiMedia',
   selector: '[media]',
 })
-export class BidiMediaDirective extends RxState<BidiMediaState> {
-  #validState$ = this.$.pipe(
+export class BidiMediaDirective implements OnDestroy, OnInit {
+  #destroy = new Subject<void>();
+  #queryDirection = new Subject<Direction>();
+  #queryDirection$ = this.#queryDirection.pipe(distinctUntilChanged());
+  #validState$ = this.#queryDirection$.pipe(
+    withLatestFrom(this.localeState.direction$),
+    map(([queryDirection, appDirection]) => ({ appDirection, queryDirection })),
     filter(
       ({ appDirection, queryDirection }) =>
         appDirection !== undefined && queryDirection !== undefined
@@ -39,21 +52,23 @@ export class BidiMediaDirective extends RxState<BidiMediaState> {
       );
     }
 
-    const queryDirection = this.queryToDirection(query);
-    this.set({ queryDirection });
+    this.#queryDirection.next(this.queryToDirection(query));
   }
 
   constructor(
     private template: TemplateRef<HTMLSourceElement>,
     private container: ViewContainerRef,
-    localeState: LocaleStateService
-  ) {
-    super();
+    private localeState: LocaleStore
+  ) {}
 
+  ngOnInit(): void {
     this.attachElementOnDirectionMatch();
     this.removeElementOnDirectionMismatch();
+  }
 
-    this.connect('appDirection', localeState.direction$);
+  ngOnDestroy(): void {
+    this.#destroy.next();
+    this.#destroy.complete();
   }
 
   private attachElement(): void {
@@ -71,7 +86,9 @@ export class BidiMediaDirective extends RxState<BidiMediaState> {
       )
     );
 
-    this.hold(directionMatch$, () => this.attachElement());
+    directionMatch$
+      .pipe(takeUntil(this.#destroy))
+      .subscribe(() => this.attachElement());
   }
 
   private isDirection(query: string): boolean {
@@ -95,6 +112,8 @@ export class BidiMediaDirective extends RxState<BidiMediaState> {
       )
     );
 
-    this.hold(directionMismatch$, () => this.removeElement());
+    directionMismatch$
+      .pipe(takeUntil(this.#destroy))
+      .subscribe(() => this.removeElement());
   }
 }
