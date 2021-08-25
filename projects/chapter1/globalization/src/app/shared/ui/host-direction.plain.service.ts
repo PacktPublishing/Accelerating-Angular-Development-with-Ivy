@@ -4,11 +4,7 @@ import { ElementRef, Injectable, OnDestroy, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
-import { LanguageTag } from './language-tag';
-
-abstract class LocaleStateService {
-  readonly locale$: Observable<LanguageTag>;
-}
+import { LocaleStateService } from '../../locale/data-access/locale-state.service';
 
 @Injectable()
 export class HostDirectionService implements OnDestroy {
@@ -24,7 +20,7 @@ export class HostDirectionService implements OnDestroy {
   ) {
     this.#direction$
       .pipe(takeUntil(this.#destroy))
-      .subscribe((direction) => this.setHostDirection(direction));
+      .subscribe((direction) => this.#setHostDirection(direction));
   }
 
   ngOnDestroy(): void {
@@ -32,7 +28,7 @@ export class HostDirectionService implements OnDestroy {
     this.#destroy.complete();
   }
 
-  private setHostDirection(direction: Direction): void {
+  #setHostDirection(direction: Direction): void {
     this.renderer.setAttribute(this.host.nativeElement, 'dir', direction);
   }
 }
