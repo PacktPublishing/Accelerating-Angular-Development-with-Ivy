@@ -1,30 +1,32 @@
-import { ElementRef, Injectable, Renderer2 } from '@angular/core';
-import { RxState } from '@rx-angular/state';
+import { ElementRef, Injectable, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { LocaleStateService } from '../../locale/data-access/locale-state.service';
+import { LocaleStore } from '../../locale/data-access/locale.store';
 import { LanguageTag } from './language-tag';
 
-export interface HostLanguageState {
-  readonly language: LanguageTag;
-}
-
 @Injectable()
-export class HostLanguageService extends RxState<HostLanguageState> {
+export class HostLanguageService implements OnDestroy, OnInit {
+  #destroy = new Subject<void>();
+
   constructor(
-    localeState: LocaleStateService,
+    private locale: LocaleStore,
     private host: ElementRef<HTMLElement>,
     private renderer: Renderer2
-  ) {
-    super();
+  ) {}
 
-    this.connect('language', localeState.locale$);
-
-    this.hold(this.select('language'), (language) =>
-      this.#setHostLanguage(language)
-    );
+  ngOnDestroy(): void {
+    this.#destroy.next();
+    this.#destroy.complete();
   }
 
-  #setHostLanguage = (language: LanguageTag): void => {
+  ngOnInit(): void {
+    this.locale.locale$
+      .pipe(takeUntil(this.#destroy))
+      .subscribe((language) => this.setHostLanguage(language));
+  }
+
+  private setHostLanguage(language: LanguageTag): void {
     this.renderer.setAttribute(this.host.nativeElement, 'lang', language);
-  };
+  }
 }

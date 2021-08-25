@@ -1,21 +1,29 @@
 import { Direction } from '@angular/cdk/bidi';
-import { ElementRef, Injectable, Renderer2 } from '@angular/core';
-import { RxState } from '@rx-angular/state';
+import { ElementRef, Injectable, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { LocaleStateService } from '../../locale/data-access/locale-state.service';
+import { LocaleStore } from '../../locale/data-access/locale.store';
 
 @Injectable()
-export class HostDirectionService extends RxState<{}> {
+export class HostDirectionService implements OnDestroy, OnInit {
+  #destroy = new Subject<void>();
+
   constructor(
-    localeState: LocaleStateService,
+    private localeState: LocaleStore,
     private host: ElementRef<HTMLElement>,
     private renderer: Renderer2
-  ) {
-    super();
+  ) {}
 
-    this.hold(localeState.direction$, (direction) =>
-      this.setHostDirection(direction)
-    );
+  ngOnDestroy(): void {
+    this.#destroy.next();
+    this.#destroy.complete();
+  }
+
+  ngOnInit(): void {
+    this.localeState.direction$
+      .pipe(takeUntil(this.#destroy))
+      .subscribe((direction) => this.setHostDirection(direction));
   }
 
   private setHostDirection(direction: Direction): void {
