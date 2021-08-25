@@ -1,8 +1,22 @@
 import { Direction } from '@angular/cdk/bidi';
 import { getLocaleDirection } from '@angular/common';
-import { Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  EmbeddedViewRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 import { Subject } from 'rxjs';
-import { distinctUntilChanged, filter, map, takeUntil, withLatestFrom } from 'rxjs/operators';
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  takeUntil,
+  withLatestFrom,
+} from 'rxjs/operators';
 
 import { LocaleStateService } from '../../locale/data-access/locale-state.service';
 
