@@ -18,9 +18,9 @@ import { allLocales } from '../ui/all-locales';
 export class LocaleContainerComponent {
   locales = allLocales;
 
-  constructor(private state: LocaleStateService) {}
+  constructor(private localeState: LocaleStateService) {}
 
   onLocaleChange(locale: LanguageTag): void {
-    this.state.set({ locale });
+    this.localeState.selectLocale(locale);
   }
 }
