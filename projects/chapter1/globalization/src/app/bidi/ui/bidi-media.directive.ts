@@ -8,14 +8,8 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { Subject } from 'rxjs';
-import {
-  distinctUntilChanged,
-  filter,
-  map,
-  takeUntil,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
+import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
 import { LocaleStore } from '../../locale/data-access/locale.store';
 
@@ -32,16 +26,9 @@ const directionQueryPattern = /^\(dir: (?<direction>ltr|rtl)\)$/;
 })
 export class BidiMediaDirective implements OnDestroy, OnInit {
   #destroy = new Subject<void>();
-  #queryDirection = new Subject<Direction>();
+  #queryDirection = new ReplaySubject<Direction>(1);
   #queryDirection$ = this.#queryDirection.pipe(distinctUntilChanged());
-  #validState$ = this.#queryDirection$.pipe(
-    withLatestFrom(this.localeState.direction$),
-    map(([queryDirection, appDirection]) => ({ appDirection, queryDirection })),
-    filter(
-      ({ appDirection, queryDirection }) =>
-        appDirection !== undefined && queryDirection !== undefined
-    )
-  );
+  #validState$: Observable<BidiMediaState>;
   #view?: EmbeddedViewRef<HTMLSourceElement>;
 
   @Input()
@@ -58,8 +45,22 @@ export class BidiMediaDirective implements OnDestroy, OnInit {
   constructor(
     private template: TemplateRef<HTMLSourceElement>,
     private container: ViewContainerRef,
-    private localeState: LocaleStore
-  ) {}
+    localeState: LocaleStore
+  ) {
+    this.#validState$ = combineLatest([
+      this.#queryDirection$,
+      localeState.direction$,
+    ]).pipe(
+      map(([queryDirection, appDirection]) => ({
+        appDirection,
+        queryDirection,
+      })),
+      filter(
+        ({ appDirection, queryDirection }) =>
+          appDirection !== undefined && queryDirection !== undefined
+      )
+    );
+  }
 
   ngOnInit(): void {
     this.attachElementOnDirectionMatch();
