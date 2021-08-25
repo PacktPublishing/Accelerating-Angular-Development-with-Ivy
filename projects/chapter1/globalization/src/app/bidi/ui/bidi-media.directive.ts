@@ -1,5 +1,11 @@
 import { Direction } from '@angular/cdk/bidi';
-import { Directive, EmbeddedViewRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  EmbeddedViewRef,
+  Input,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 import { RxState } from '@rx-angular/state';
 import { filter } from 'rxjs/operators';
 
