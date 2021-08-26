@@ -2,7 +2,7 @@ import { ElementRef, Injectable, OnDestroy, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { LocaleStore } from '../../locale/data-access/locale.store';
+import { LocaleStateService } from '../../locale/data-access/locale-state.service';
 import { LanguageTag } from './language-tag';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class HostLanguageService implements OnDestroy {
   #destroy = new Subject<void>();
 
   constructor(
-    private locale: LocaleStore,
+    private locale: LocaleStateService,
     private host: ElementRef<HTMLElement>,
     private renderer: Renderer2
   ) {

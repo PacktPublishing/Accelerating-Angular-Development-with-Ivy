@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { LanguageTag } from '../../shared/ui/language-tag';
-import { LocaleStore } from '../data-access/locale.store';
+import { LocaleStateService } from '../data-access/locale-state.service';
 import { allLocales } from '../ui/all-locales';
 
 @Component({
@@ -18,7 +18,7 @@ import { allLocales } from '../ui/all-locales';
 export class LocaleContainerComponent {
   locales = allLocales;
 
-  constructor(private localeState: LocaleStore) {}
+  constructor(private localeState: LocaleStateService) {}
 
   onLocaleChange(locale: LanguageTag): void {
     this.localeState.selectLocale(locale);

@@ -3,14 +3,14 @@ import { ElementRef, Injectable, OnDestroy, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { LocaleStore } from '../../locale/data-access/locale.store';
+import { LocaleStateService } from '../../locale/data-access/locale-state.service';
 
 @Injectable()
 export class HostDirectionService implements OnDestroy {
   #destroy = new Subject<void>();
 
   constructor(
-    private localeState: LocaleStore,
+    private localeState: LocaleStateService,
     private host: ElementRef<HTMLElement>,
     private renderer: Renderer2
   ) {

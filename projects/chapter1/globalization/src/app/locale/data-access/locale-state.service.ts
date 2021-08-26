@@ -16,7 +16,7 @@ interface LocaleState {
 @Injectable({
   providedIn: 'root',
 })
-export class LocaleStore extends ComponentStore<LocaleState> {
+export class LocaleStateService extends ComponentStore<LocaleState> {
   /**
    * The app locale is automatically bundled.
    */

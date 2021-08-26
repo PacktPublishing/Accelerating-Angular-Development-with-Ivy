@@ -11,7 +11,7 @@ import {
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, takeUntil } from 'rxjs/operators';
 
-import { LocaleStore } from '../../locale/data-access/locale.store';
+import { LocaleStateService } from '../../locale/data-access/locale-state.service';
 
 export interface BidiMediaState {
   readonly appDirection: Direction;
@@ -45,7 +45,7 @@ export class BidiMediaDirective implements OnDestroy, OnInit {
   constructor(
     private template: TemplateRef<HTMLSourceElement>,
     private container: ViewContainerRef,
-    localeState: LocaleStore
+    localeState: LocaleStateService
   ) {
     this.#validState$ = combineLatest([
       this.#queryDirection$,
