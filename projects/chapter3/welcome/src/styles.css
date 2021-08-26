@@ -1,0 +1,7 @@
+:lang(en) {
+  --welcome-text: 'Welcome to my website!';
+}
+
+:lang(fr) {
+  --welcome-text: 'Bienvenue sur mon site web!';
+}
