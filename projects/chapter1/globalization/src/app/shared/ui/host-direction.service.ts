@@ -10,11 +10,11 @@ export class HostDirectionService implements OnDestroy {
   #destroy = new Subject<void>();
 
   constructor(
-    private localeState: LocaleStateService,
+    localeState: LocaleStateService,
     private host: ElementRef<HTMLElement>,
     private renderer: Renderer2
   ) {
-    this.localeState.direction$
+    localeState.direction$
       .pipe(takeUntil(this.#destroy))
       .subscribe((direction) => this.setHostDirection(direction));
   }
