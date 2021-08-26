@@ -23,6 +23,8 @@ Feature app: [Colored panels](/projects/chapter3/colored-panels/src/app)
 Feature app:
 [CSS Custom Properties](/projects/chapter3/css-custom-properties/src/app)
 
+Feature app: [Welcome](/projects/chapter3/welcome/src/app)
+
 ## Part 2: Build a real world application with the Angular Ivy features you learnt
 
 Real world app: [Angular Academy](/projects/demo/src/app)
