@@ -1,0 +1,11 @@
+:root {
+  --background-color: rebeccapurple;
+}
+
+.contrast {
+  --background-color: hotpink;
+}
+
+.panel {
+  background-color: var(--background-color);
+}

@@ -1,6 +1,6 @@
 # Accelerating Angular Development with Ivy
 
-By Lars Gyrup Brink Nielsen & Jacob Andresen
+Authored by Lars Gyrup Brink Nielsen & Jacob Andresen. Published by Packt.
 
 ## Part 1: A quick and functional guide to Angular Ivy
 
@@ -18,7 +18,10 @@ Feature app: [Style bindings](/projects/chapter2/style-bindings/src/app)
 
 Feature app: [Any provider scope](/projects/chapter3/any-provider-scope/src/app)
 
-Feature app: [CSS Custom Properties](/projects/chapter3/css-custom-properties/src/app)
+Feature app: [Colored panels](/projects/chapter3/colored-panels/src/app)
+
+Feature app:
+[CSS Custom Properties](/projects/chapter3/css-custom-properties/src/app)
 
 ## Part 2: Build a real world application with the Angular Ivy features you learnt
 
