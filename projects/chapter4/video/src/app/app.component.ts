@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `Video`,
+  template: `<app-video></app-video>`,
   styles: [
     `
       :host {
