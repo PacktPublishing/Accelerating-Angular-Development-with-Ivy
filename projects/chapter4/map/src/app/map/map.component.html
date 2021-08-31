@@ -1,0 +1,15 @@
+<google-map
+  *ngIf="isGoogleMapsApiLoaded$ | async; else spinner"
+  [center]="{ lat: 56.783778, lng: 8.228937 }"
+>
+  <map-marker
+    [options]="{
+      icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+    }"
+    [position]="{ lat: 56.783778, lng: 8.228937 }"
+  ></map-marker>
+</google-map>
+
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>
