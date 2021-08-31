@@ -27,6 +27,8 @@ Feature app: [Welcome](/projects/chapter3/welcome/src/app)
 
 ### Chapter 4: Exploring Angular Components features
 
+Feature app: [Map](/projects/chapter4/map/src/app)
+
 Feature app: [Video](/projects/chapter4/video/src/app)
 
 ## Part 2: Build a real world application with the Angular Ivy features you learnt
