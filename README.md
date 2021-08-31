@@ -25,6 +25,10 @@ Feature app:
 
 Feature app: [Welcome](/projects/chapter3/welcome/src/app)
 
+### Chapter 4: Exploring Angular Components features
+
+Feature app: [Video](/projects/chapter4/video/src/app)
+
 ## Part 2: Build a real world application with the Angular Ivy features you learnt
 
 Real world app: [Angular Academy](/projects/demo/src/app)
