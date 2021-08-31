@@ -688,7 +688,7 @@
               "projects/chapter4/map/src/favicon.ico",
               "projects/chapter4/map/src/assets"
             ],
-            "styles": ["projects/chapter4/map/src/styles.css"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "projects/chapter4/map/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -753,7 +753,7 @@
               "projects/chapter4/map/src/favicon.ico",
               "projects/chapter4/map/src/assets"
             ],
-            "styles": ["projects/chapter4/map/src/styles.css"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "projects/chapter4/map/src/styles.css"],
             "scripts": []
           }
         }
@@ -946,5 +946,5 @@
       }
     }
   },
-  "defaultProject": "demo"
+  "defaultProject": "chapter4-map"
 }
