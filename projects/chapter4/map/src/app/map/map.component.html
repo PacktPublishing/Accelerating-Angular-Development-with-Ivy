@@ -1,0 +1,5 @@
+<google-map *ngIf="isGoogleMapsApiLoaded$ | async; else spinner"></google-map>
+
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>
