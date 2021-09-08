@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<h1>RandomNumber</h1>`,
+  template: `<app-random-number></app-random-number>`,
   styles: [
     `
       :host {
