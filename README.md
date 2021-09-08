@@ -34,3 +34,9 @@ Feature app: [Video](/projects/chapter4/video/src/app)
 ## Part 2: Build a real world application with the Angular Ivy features you learnt
 
 Real world app: [Angular Academy](/projects/demo/src/app)
+
+## Part 3: Upgrade your View Engine application and development workflow to Angular Ivy
+
+### Chapter 9: Debugging with the new Ivy runtime APIs
+
+Feature app: [Random number](/projects/chapter9/random-number/src/app)
