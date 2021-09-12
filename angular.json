@@ -669,11 +669,6 @@
     },
     "chapter4-map": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
       "root": "projects/chapter4/map",
       "sourceRoot": "projects/chapter4/map/src",
       "prefix": "app",
@@ -769,11 +764,6 @@
     },
     "chapter4-video": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
       "root": "projects/chapter4/video",
       "sourceRoot": "projects/chapter4/video/src",
       "prefix": "app",
@@ -955,34 +945,6 @@
     },
     "chapter12-feature-flags": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "inlineTemplate": true,
-          "inlineStyle": true,
-          "skipTests": true
-        },
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": true
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        },
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
       "root": "projects/chapter12/feature-flags",
       "sourceRoot": "projects/chapter12/feature-flags/src",
       "prefix": "app",
@@ -1068,6 +1030,99 @@
               "projects/chapter12/feature-flags/src/assets"
             ],
             "styles": ["projects/chapter12/feature-flags/src/styles.css"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "chapter12-feature-flag-initializer": {
+      "projectType": "application",
+      "root": "projects/chapter12/feature-flag-initializer",
+      "sourceRoot": "projects/chapter12/feature-flag-initializer/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/chapter12-feature-flag-initializer",
+            "index": "projects/chapter12/feature-flag-initializer/src/index.html",
+            "main": "projects/chapter12/feature-flag-initializer/src/main.ts",
+            "polyfills": "projects/chapter12/feature-flag-initializer/src/polyfills.ts",
+            "tsConfig": "projects/chapter12/feature-flag-initializer/tsconfig.app.json",
+            "assets": [
+              "projects/chapter12/feature-flag-initializer/src/favicon.ico",
+              "projects/chapter12/feature-flag-initializer/src/assets"
+            ],
+            "styles": [
+              "projects/chapter12/feature-flag-initializer/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/chapter12/feature-flag-initializer/src/environments/environment.ts",
+                  "with": "projects/chapter12/feature-flag-initializer/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "chapter12-feature-flag-initializer:build:production"
+            },
+            "development": {
+              "browserTarget": "chapter12-feature-flag-initializer:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "chapter12-feature-flag-initializer:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/chapter12/feature-flag-initializer/src/test.ts",
+            "polyfills": "projects/chapter12/feature-flag-initializer/src/polyfills.ts",
+            "tsConfig": "projects/chapter12/feature-flag-initializer/tsconfig.spec.json",
+            "karmaConfig": "projects/chapter12/feature-flag-initializer/karma.conf.js",
+            "assets": [
+              "projects/chapter12/feature-flag-initializer/src/favicon.ico",
+              "projects/chapter12/feature-flag-initializer/src/assets"
+            ],
+            "styles": [
+              "projects/chapter12/feature-flag-initializer/src/styles.css"
+            ],
             "scripts": []
           }
         }
