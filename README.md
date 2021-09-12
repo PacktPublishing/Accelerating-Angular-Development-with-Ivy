@@ -43,4 +43,7 @@ Feature app: [Random number](/projects/chapter9/random-number/src/app)
 
 ### Chapter 12: Embracing Ahead-of-Time compilation
 
+Feature app:
+[Feature flag initializer](/projects/chapter12/feature-flag-initializer/src/app)
+
 Feature app: [Feature flags](/projects/chapter12/feature-flags/src/app)
