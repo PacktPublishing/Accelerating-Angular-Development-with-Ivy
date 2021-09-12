@@ -40,3 +40,7 @@ Real world app: [Angular Academy](/projects/demo/src/app)
 ### Chapter 9: Debugging with the new Ivy runtime APIs
 
 Feature app: [Random number](/projects/chapter9/random-number/src/app)
+
+### Chapter 12: Embracing Ahead-of-Time compilation
+
+Feature app: [Feature flags](/projects/chapter12/feature-flags/src/app)
