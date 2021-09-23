@@ -109,9 +109,9 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 
 ### Related products <Other books you may enjoy>
-* Linux: Powerful Server Administration [[Packt]](https://www.packtpub.com/networking-and-servers/linux-powerful-server-administration?utm_source=github&utm_medium=repository&utm_campaign=9781788293778) [[Amazon]](https://www.amazon.com/dp/1788293770)
+* Angular Cookbook [[Packt]](https://www.packtpub.com/product/angular-cookbook/9781838989439?utm_source=github&utm_medium=repository&utm_campaign=9781838989439) [[Amazon]](https://www.amazon.com/dp/1838989439)
 
-* Linux Device Drivers Development [[Packt]](https://www.packtpub.com/networking-and-servers/linux-device-drivers-development?utm_source=github&utm_medium=repository&utm_campaign=9781785280009) [[Amazon]](https://www.amazon.com/dp/1788293770)
+* Angular Projects - Second Edition [[Packt]](https://www.packtpub.com/product/angular-projects-second-edition/9781800205260?utm_source=github&utm_medium=repository&utm_campaign=9781800205260) [[Amazon]](https://www.amazon.com/dp/1800205260)
 
 ## Get to Know the Authors
 **Jacob Andresen**
