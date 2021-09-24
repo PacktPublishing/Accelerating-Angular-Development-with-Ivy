@@ -26,19 +26,20 @@ alt="https://www.packtpub.com/" border="5" /></a>
 All of the code is organized into folders. For example, Chapter01.
 
 The code will look like the following:
-```
+```ts
 function changeSettings(settings: {
-sleepTimer: number;
-volume: number;
+  sleepTimer: number;
+  volume: number;
 }): void {
-const volumeSetting = settings.volume || 0.5;
-sendVolumeSignal(volumeSetting);
-const sleepTimerSetting = settings.sleepTimer || 900;
-sendSleepTimerSignal(sleepTimerSetting);
+  const volumeSetting = settings.volume || 0.5;
+  sendVolumeSignal(volumeSetting);
+  
+  const sleepTimerSetting = settings.sleepTimer || 900;
+  sendSleepTimerSignal(sleepTimerSetting);
 }
 ```
 
-**Following is what you need for this book:**
+**The following is what you need for this book:**
 
 This book is for experienced Angular web developers who want to migrate to the latest Ivy engine for building faster web applications. Intermediate knowledge of Angular and TypeScript will help you get the most out of this book.
 
@@ -108,16 +109,14 @@ Feature app: [Feature flags](/projects/chapter12/feature-flags/src/app)
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781800205215_ColorImages.pdf).
 
 
-### Related products <Other books you may enjoy>
+### Related products \<Other books you may enjoy\>
 * Angular Cookbook [[Packt]](https://www.packtpub.com/product/angular-cookbook/9781838989439?utm_source=github&utm_medium=repository&utm_campaign=9781838989439) [[Amazon]](https://www.amazon.com/dp/1838989439)
 
 * Angular Projects - Second Edition [[Packt]](https://www.packtpub.com/product/angular-projects-second-edition/9781800205260?utm_source=github&utm_medium=repository&utm_campaign=9781800205260) [[Amazon]](https://www.amazon.com/dp/1800205260)
 
 ## Get to Know the Authors
-**Jacob Andresen**
-works as a senior software developer based in Copenhagen, Denmark. He has been working as a software developer and consultant in information retrieval systems and web applications since 2002. 
-
 **Lars Gyrup Brink Nielsen**
 is a frontend architect at Systemate A/S in Denmark. As a cofounder of the open learning non-profit This is Learning, he creates open platforms for free knowledge and public learning. Lars is a tech writer, international tech speaker, FOSS maintainer, Microsoft MVP in Developer Technologies, and GitHub Star.
 
-
+**Jacob Andresen**
+works as a senior software developer based in Copenhagen, Denmark. He has been working as a software developer and consultant in information retrieval systems and web applications since 2002. 
