@@ -31,10 +31,10 @@ function changeSettings(settings: {
   sleepTimer: number;
   volume: number;
 }): void {
-  const volumeSetting = settings.volume || 0.5;
+  const volumeSetting = settings.volume ?? 0.5;
   sendVolumeSignal(volumeSetting);
   
-  const sleepTimerSetting = settings.sleepTimer || 900;
+  const sleepTimerSetting = settings.sleepTimer ?? 900;
   sendSleepTimerSignal(sleepTimerSetting);
 }
 ```
