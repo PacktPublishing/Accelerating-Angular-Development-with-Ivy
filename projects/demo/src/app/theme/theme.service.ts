@@ -17,15 +17,15 @@ export class ThemeService {
   public getSetting(name: string): string {
     switch (name) {
       case 'background':
-        return this.getItem(name) || this.theme.background;
+        return this.getItem(name) ?? this.theme.background;
       case 'tileBackground':
-        return this.getItem(name) || this.theme.tileBackground;
+        return this.getItem(name) ?? this.theme.tileBackground;
       case 'headerBackground':
-        return this.getItem(name) || this.theme.headerBackground;
+        return this.getItem(name) ?? this.theme.headerBackground;
       case 'textSize':
-        return this.getItem(name) || this.theme.textSize;
+        return this.getItem(name) ?? this.theme.textSize;
       case 'videoSize':
-        return this.getItem(name) || this.theme.videoSize;
+        return this.getItem(name) ?? this.theme.videoSize;
     }
     return 'white';
   }
