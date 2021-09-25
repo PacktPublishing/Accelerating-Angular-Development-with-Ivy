@@ -88,7 +88,7 @@ Feature app: [Map](/projects/chapter4/map/src/app)
 
 Feature app: [Video](/projects/chapter4/video/src/app)
 
-## Part 2: Build a real world application with the Angular Ivy features you learnt
+## Part 2: Build a real world application with the Angular Ivy features you learned
 
 Real world app: [Angular Academy](/projects/demo/src/app)
 
