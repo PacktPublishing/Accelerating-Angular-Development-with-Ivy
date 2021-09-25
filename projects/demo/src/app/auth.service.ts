@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+
 import { IUser } from './user.model';
 
 @Injectable({
@@ -23,6 +24,6 @@ export class AuthService {
   }
 
   get token(): string {
-    return localStorage.getItem('token') || '';
+    return localStorage.getItem('token') ?? '';
   }
 }
