@@ -1,7 +1,3 @@
-## [Get this title for $10 on Packt's Spring Sale](https://www.packt.com/B16295?utm_source=github&utm_medium=packt-github-repo&utm_campaign=spring_10_dollar_2022)
------
-For a limited period, all eBooks and Videos are only $10. All the practical content you need \- by developers, for developers
-
 # Accelerating Angular Development with Ivy
 
 <a href="https://www.packtpub.com/product/accelerating-angular-development-with-ivy/9781800205215?utm_source=github&utm_medium=repository&utm_campaign=9781800205215"><img src="https://static.packt-cdn.com/products/9781800205215/cover/smaller" alt="Accelerating Angular Development with Ivy" height="256px" align="right"></a>
