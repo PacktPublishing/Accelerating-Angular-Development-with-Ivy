@@ -120,3 +120,7 @@ is a frontend architect at Systemate A/S in Denmark. As a cofounder of the open 
 
 **Jacob Andresen**
 works as a senior software developer based in Copenhagen, Denmark. He has been working as a software developer and consultant in information retrieval systems and web applications since 2002. 
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781800205215">https://packt.link/free-ebook/9781800205215 </a> </p>
